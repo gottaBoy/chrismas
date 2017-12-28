@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<!-- mirror | Specifies a repository mirror site to use instead of a given 
+		repository. The repository that | this mirror serves has an ID that matches 
+		the mirrorOf element of this mirror. IDs are used | for inheritance and direct 
+		lookup purposes, and must be unique across the set of mirrors. | -->
+	 
+	<mirrors>
+		<mirror>
+			<id>nexus-local</id>
+			<mirrorOf>central</mirrorOf>
+			<name>Nexus local</name>
+			<url>http://maven.vbizz.cn/nexus/content/groups/public/</url>
+		</mirror>
+		
+	<!-- 	<mirror>
+			<id>nexus-osc</id>
+			<mirrorOf>central</mirrorOf>
+			<name>Nexus osc</name>
+			<url>http://maven.oschina.net/content/groups/public/</url>
+		</mirror>
+		<mirror>
+			<id>nexus-osc-thirdparty</id>
+			<mirrorOf>thirdparty</mirrorOf>
+			<name>Nexus osc thirdparty</name>
+			<url>http://maven.oschina.net/content/repositories/thirdparty/</url>
+		</mirror>
+		 -->
+	</mirrors>
+	<profiles>
+		<profile>
+			<id>vbizz</id>
+
+			<repositories>
+				<repository>
+					<id>local-nexus</id>
+					<name>local private nexus</name>
+					<url>http://maven.vbizz.cn/nexus/content/groups/public/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>nexus</id>
+					<name>Nexus</name>
+					<url>http://maven.oschina.net/content/groups/public/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>local-nexus</id>
+					<name>Nexus</name>
+					<url>http://maven.vbizz.cn/nexus/content/groups/public</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<id>nexus</id>
+					<name>local private nexus</name>
+					<url>http://maven.oschina.net/content/groups/public/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+
+	<activeProfiles>
+		<activeProfile>vbizz</activeProfile>
+	</activeProfiles>
+	<servers>
+		<server>
+			<id>releases</id>
+			<username>admin</username>
+			<password>vsteel.com8</password>
+		</server>
+		<server>
+			<id>snapshots</id>
+			<username>admin</username>
+			<password>vsteel.com8</password>
+		</server>
+	</servers>
+	<localRepository>C:/User/my/.m2/repository</localRepository>
+</settings>

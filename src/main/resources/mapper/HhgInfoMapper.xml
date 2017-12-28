@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.HhgInfoDao">
+	<resultMap id="BaseResultMap" type="com.example.demo.bean.HhgInfo">
+		<result column="id" property="id" jdbcType="BIGINT"/>
+		<result column="send" property="send" jdbcType="VARCHAR" />
+		<result column="arrive" property="arrive" jdbcType="VARCHAR" />
+		<result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+		<result column="departInfo" property="departInfo" jdbcType="VARCHAR" />
+		<result column="departInfo_name" property="departInfoName" jdbcType="VARCHAR" />
+		<result column="departInfo_tel" property="departInfoTel" jdbcType="VARCHAR" />
+		<result column="departInfo_more" property="departInfoMore" jdbcType="VARCHAR" />
+		<result column="is_in_port" property="isInPort" jdbcType="BIT" />
+		<result column="expire" property="expire" jdbcType="BIT" />
+		<result column="creator_id" property="creatorId" jdbcType="BIGINT" />
+		<result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="modifier_id" property="modifierId" jdbcType="BIGINT" />
+		<result column="modifier_name" property="modifierName" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<parameterMap id="HhgInfo" type="com.example.demo.bean.HhgInfo"/>
+
+	<sql id="Base_Column_List">
+		id, send, arrive, publish_time, price, 
+		goods_name, departInfo,departInfo_name, departInfo_tel, departInfo_more, is_in_port, 
+		expire, creator_id, creator_name, create_time, modifier_id,
+		modifier_name, modify_time, remark
+	</sql>
+	
+	<select id="findHhgInfo" resultMap="BaseResultMap" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    from sys_hhg_info
+	    order by publish_time desc
+	</select>
+	
+	<select id="findHhgInfoBefore" resultMap="BaseResultMap" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    from sys_hhg_info
+	    <where>
+	        date_format(publish_time,'%Y%m%d') != date_format(current_date(),'%Y%m%d')
+	    </where>
+	    order by publish_time desc
+	</select>
+
+	<select id="findHhgInfoById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from sys_hhg_info
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<select id="findAllHhgInfo" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from sys_hhg_info
+	    order by publish_time desc
+	</select>
+
+	<insert id="saveHhgInfo" parameterMap="HhgInfo" useGeneratedKeys="true" keyProperty="id">
+	   insert into sys_hhg_info
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	      <if test="id != null" >
+	        id,
+	      </if>
+	      <if test="send != null" >
+	        send,
+	      </if>
+	      <if test="arrive != null" >
+	        arrive,
+	      </if>
+	      <if test="price != null" >
+	        price,
+	      </if>
+	      <if test="goodsName != null" >
+	        goods_name,
+	      </if>
+	      <if test="departInfo != null" >
+	        departInfo,
+	      </if>
+	      <if test="departInfoName != null" >
+	        departInfo_name,
+	      </if>
+	      <if test="departInfoTel != null" >
+	        departInfo_tel,
+	      </if>
+	      <if test="departInfoMore != null" >
+	        departInfo_more,
+	      </if>
+	      <if test="isInPort != null" >
+	        is_in_port,
+	      </if>
+	      <if test="remark != null" >
+	        remark,
+	      </if>
+	      <if test="publishTime != null" >
+	        publish_time,
+	      </if>
+	      <if test="expire != null" >
+	        expire,
+	      </if>
+	      <if test="creatorId != null" >
+	        creator_id,
+	      </if>
+	      <if test="creatorName != null" >
+	        creator_name,
+	      </if>
+	      <if test="createTime != null" >
+	        create_time,
+	      </if>
+	      <if test="modifierId != null" >
+	        modifier_id,
+	      </if>
+	      <if test="modifierName != null" >
+	        modifier_name,
+	      </if>
+	      <if test="modifyTime != null" >
+	        modify_time,
+	      </if>
+	    </trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+	      <if test="id != null" >
+	        #{id,jdbcType=BIGINT},
+	      </if>
+	      <if test="send != null" >
+	        #{send,jdbcType=VARCHAR},
+	      </if>
+	      <if test="arrive != null" >
+	        #{arrive,jdbcType=VARCHAR},
+	      </if>
+	      <if test="price != null" >
+	        #{price,jdbcType=DECIMAL},
+	      </if>
+	      <if test="goodsName != null" >
+	        #{goodsName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="departInfo != null" >
+	        #{departInfo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="departInfoName != null" >
+	        #{departInfoName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="departInfoTel != null" >
+	        #{departInfoTel,jdbcType=VARCHAR},
+	      </if>
+	      <if test="departInfoMore != null" >
+	        #{departInfoMore,jdbcType=VARCHAR},
+	      </if>
+	      <if test="isInPort != null" >
+	        #{isInPort,jdbcType=BIT},
+	      </if>
+	      <if test="remark != null" >
+	        #{remark,jdbcType=VARCHAR},
+	      </if>
+	      <if test="publishTime != null" >
+	        #{publishTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="expire != null" >
+	        #{expire,jdbcType=BIT},
+	      </if>
+	      <if test="creatorId != null" >
+	        #{creator_id,jdbcType=BIGINT},
+	      </if>
+	      <if test="creatorName != null" >
+	        #{creator_name,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createTime != null" >
+	        #{create_time,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="modifierId != null" >
+	        #{modifier_id,jdbcType=BIGINT},
+	      </if>
+	      <if test="modifierName != null" >
+	        #{modifier_name,jdbcType=VARCHAR},
+	      </if>
+	      <if test="modifyTime != null" >
+	        #{modify_time,jdbcType=TIMESTAMP},
+	      </if>
+	    </trim>
+	</insert>
+
+	<update id="updateHhgInfo" parameterMap="HhgInfo">
+		update
+			sys_hhg_info
+		<set>
+		<if test="send!=null">
+			send = #{send,jdbcType=VARCHAR},
+		</if>
+		<if test="arrive!=null">
+			arrive = #{arrive,jdbcType=VARCHAR},
+		</if>
+		<if test="price!=null">
+			price = #{price,jdbcType=DECIMAL},
+		</if>
+		<if test="goodsName!=null">
+			goods_name = #{goodsName,jdbcType=VARCHAR},
+		</if>
+		<if test="departInfo!=null">
+			departInfo = #{departInfo,jdbcType=VARCHAR},
+		</if>
+		<if test="departInfoName!=null">
+			departInfo_name = #{departInfoName,jdbcType=VARCHAR},
+		</if>
+		<if test="departInfoTel!=null">
+			departInfo_tel = #{departInfoTel,jdbcType=VARCHAR},
+		</if>
+		<if test="departInfoMore!=null">
+			departInfo_more = #{departInfoMore,jdbcType=VARCHAR},
+		</if>
+		<if test="publishTime!=null">
+			publish_time = #{publishTime,jdbcType=VARCHAR},
+		</if>
+		<if test="isInPort!=null">
+			is_in_port = #{isInPort,jdbcType=BIT},
+		</if>
+		<if test="remark!=null">
+			remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<delete id="deleteHhgInfo" parameterType="java.lang.Long">
+		delete from
+			sys_hhg_info
+		where
+			id = #{id}
+	</delete>
+</mapper>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html style="background-color: white;">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<title>黄骅港</title>
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="http://static.cargocn.com/libs/startbootstrap-sb-admin-2/1.0.8/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			.footer {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+			}
+			table{
+			    padding-bottom:60px;
+			    margin-bottom:60px;
+			}
+			table thead th{
+			    text-align: center;
+			}
+			.pspan{
+			   width:25%;
+			}
+			.bg{
+			   background-position:50% 50%;
+			   background-size:cover;
+			   background-image:url(./bannar.png)
+			}
+			.bg-phone{
+			   background-position:50% 50%;
+			   background-size:cover;
+			   background-image:url(./phone.png)
+			}
+			.page-header{
+			   margin: 20px 0 10px;
+			}
+		</style>
+		<script type="text/javascript">
+		</script>
+	</head>
+    <!-- <body style="background-color: #0099cc;text-align: center;"> -->
+	<body style="background-color: white;text-align: center;">
+	    <!-- <div class="bg">
+	    </div> -->
+	    <image src="banner.png" style="width:100%;height:100%;"/>
+	    <div class="ibox" style="background: lightgray;width: 100%;height: 20px;">
+	       2017.07.03<div id="tel"></div>
+        </div>
+        
+	    <div class="page-header" style="position:relative">
+	      <div style="width: 60px;height: 60px;position: absolute;left:0px;top:20px;">
+	         <image src="hxs.jpg" style="width:100%;height:100%;"/>
+	      </div>
+	      <div style="width: 100%;height: 100%;position: relative;margin: 0 auto;">
+	        <p style="font-size:24px;">东回舍--中晟库 运费75</p> 
+	        <p style="font-size:16px;">现货好装   港口有带车  带车费煤场出</p>
+	        <p style="font-size:16px;">联系电话 18226626908</p>
+	      </div>
+	      <div style="width: 30px;height: 30px;position: absolute;right:0px;top:35px;">
+	         <image src="phone.png" style="width:100%;height:100%;" onclick="messageModal();"/>
+		  </div>
+		</div>
+		
+        <div class="ibox" style="background: white;width: 100%;height: 60px;padding-right: 0px;">
+        </div>
+        <div class="footer" style="background: white;width: 100%;height: 60px;padding-right: 0px;">
+			<div class="col-xs-12" style="padding-left: 0px;padding-right: 0px;">
+			    货源信息真实有效，首页右下角限时领取50元红包！<br/>
+				<a href="tel:4008565886">400-856-5886</a>
+			</div>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" role="dialog" aria-labelledby="messageModalLabel" id="messageModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">×</span>
+					</button>
+						<h3 class="modal-title" id="messageModalLabel">客户税点</h3>
+					</div>
+					<div class="modal-body clearfix">
+						<div class="row col-sm-12">
+							<div class="col-sm-8 form-group">
+								<label>客户名称</label>
+								<input type="text" id="codename" class="form-control">
+							</div>
+							<div class="col-sm-4 form-group">
+								<label>税点      例如:(0.09)</label>
+								<input type="text" id="codevalue" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="addCompanyInvoice()">保存</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+<script>
+function messageModal(){
+	$("#messageModal").modal("show");
+}
+$(document).ready(function(){
+	var phononum = "18226626908";
+	$("#tel").html(phononum.substring(0,3)+"****"+phononum.substring(8,11));
+})
+</script>
+</html>
